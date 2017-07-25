@@ -1,2 +1,3 @@
-# beacon
-Android app from my final paper for tracking a bus
+# Introduction
+
+For people with visual impairment a simple task, such as taking the bus to go work, can become something very hard to do. For decades this sort of daily task wasn't thought to serve people with this sort of disability. With an increasing penetration of technologies such as smartphones and a better mobile network (i.e. 4G), there is no longer an acceptable excuse to keep these people excluded from a service of good quality. With this idea in mind, this final paper (TCC), proposes to build a system that identifies that a person with visual impariment has arrived on a bus stop, alerts the bus driver of this event, triggers the process of helping the user to enter the vehicle, improving, therefore, the final experience of the system's user.
