@@ -12,6 +12,8 @@ ext{
     RETROFIT_VERSION = '2.3.0'
     OKHTTP_LOGGING_INTERCEPTOR_VERSION = '3.8.1'
 
+    ALT_BEACON_VERSION = '2.11'
+
     ANDROID_SUPPORT_APPCOMPAT_VERSION = '25.3.1'
 }
 
@@ -53,6 +55,9 @@ dependencies {
     // RETROFIT
     compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
     compile "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
+
+    // ALT BEACON
+    compile "org.altbeacon:android-beacon-library:${ALT_BEACON_VERSION}"
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
