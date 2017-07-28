@@ -1,10 +1,13 @@
 package com.vctapps.beacon.domain.usecase
 
 import com.vctapps.beacon.core.domain.UseCase
-import io.reactivex.Completable
+import com.vctapps.beacon.domain.entity.Bus
+import io.reactivex.Maybe
 
-interface GetBusDetails: UseCase<Completable>{
+interface GetBusDetails: UseCase<Maybe<Bus>>{
 
-    fun setIdBus(idBus: Int): GetBusDetails
+    fun setIdBus(idBus: Int): RequestBus
+
+    fun setIdBusStop(idBusStop: Int): RequestBus
 
 }
