@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 ext{
     RXJAVA_VERSION = '2.1.2'
@@ -14,7 +15,9 @@ ext{
 
     ALT_BEACON_VERSION = '2.11'
 
-    ANDROID_SUPPORT_APPCOMPAT_VERSION = '25.3.1'
+    TIMBER_VERSION = '4.5.1'
+
+    ANDROID_SUPPORT_APPCOMPAT_VERSION = '25.1.1'
 }
 
 android {
@@ -22,7 +25,7 @@ android {
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.vctapps.beacon"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -34,6 +37,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -47,11 +51,6 @@ dependencies {
     // LOGGING INTERCEPTOR
     compile "com.squareup.okhttp3:logging-interceptor:${OKHTTP_LOGGING_INTERCEPTOR_VERSION}"
 
-    // DAGGER
-    compile "com.google.dagger:dagger:${DAGGER_VERSION}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
-    provided "javax.annotation:jsr250-api:${ANNOTATION_JSR250_VERSION}"
-
     // RETROFIT
     compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
     compile "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
@@ -59,9 +58,9 @@ dependencies {
     // ALT BEACON
     compile "org.altbeacon:android-beacon-library:${ALT_BEACON_VERSION}"
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    // Timber
+    compile "com.jakewharton.timber:timber:${TIMBER_VERSION}"
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
