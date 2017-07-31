@@ -1,4 +1,4 @@
-package com.vctapps.beacon.data.datasource.busstop
+package com.vctapps.beacon.data.busstop.datasource
 
 import io.reactivex.Completable
 import io.reactivex.Maybe

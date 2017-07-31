@@ -1,14 +1,14 @@
-package com.vctapps.beacon.data.datasource.busstop.cache
+package com.vctapps.beacon.data.busstop.datasource.cache
 
 import com.vctapps.beacon.core.InvalidData
-import com.vctapps.beacon.data.datasource.busstop.LocalBusStopDatasource
+import com.vctapps.beacon.data.busstop.datasource.LocalBusStopDatasource
 import io.reactivex.Completable
 import io.reactivex.Maybe
 
 class CacheBusStopDatasourceImpl: LocalBusStopDatasource {
 
     companion object {
-        fun getNewInstance(): LocalBusStopDatasource{
+        fun getNewInstance(): LocalBusStopDatasource {
             return CacheBusStopDatasourceImpl()
         }
     }

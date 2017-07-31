@@ -1,8 +1,8 @@
-package com.vctapps.beacon.data.datasource.busstop.beacon
+package com.vctapps.beacon.data.busstop.datasource.beacon
 
 import android.content.Context
 import android.os.RemoteException
-import com.vctapps.beacon.data.datasource.busstop.RemoteBusstopDatasource
+import com.vctapps.beacon.data.busstop.datasource.RemoteBusstopDatasource
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import org.altbeacon.beacon.*

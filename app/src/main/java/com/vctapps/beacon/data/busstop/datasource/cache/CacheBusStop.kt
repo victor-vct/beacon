@@ -1,4 +1,4 @@
-package com.vctapps.beacon.data.datasource.busstop.cache
+package com.vctapps.beacon.data.busstop.datasource.cache
 
 import com.vctapps.beacon.core.InvalidData
 

@@ -1,10 +1,10 @@
-package com.vctapps.beacon.data
+package com.vctapps.beacon.data.busstop
 
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import org.altbeacon.beacon.BeaconConsumer
 
-interface Repository {
+interface BusStopRepository {
 
     fun setUp(beaconConsumer: BeaconConsumer): Completable
 
