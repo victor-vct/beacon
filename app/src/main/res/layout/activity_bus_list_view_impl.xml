@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vctapps.beacon.presentation.listbus.view.ListBusViewImpl">
+
+    <include layout="@layout/toolbar"/>
+
+    <com.vctapps.beacon.core.presentation.RecyclerViewState
+        android:id="@+id/recyclerview_list_bus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
