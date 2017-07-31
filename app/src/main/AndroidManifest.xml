@@ -17,7 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.listbus.view.ListBusViewImpl"/>
+        <activity
+            android:label="Ônibus disponíveis"
+            android:name=".presentation.listbus.view.ListBusViewImpl" />
+        <activity
+            android:label="Detalhes do ônibus"
+            android:name=".presentation.detailbus.view.DetailBusViewImpl"/>
     </application>
 
 </manifest>

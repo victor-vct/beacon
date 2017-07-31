@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.vctapps.beacon.R
-import com.vctapps.beacon.presentation.listbus.model.BusModelView
+import com.vctapps.beacon.presentation.model.BusModelView
 
 
 class ListBusItemAdapter(val listBusModelView: MutableList<BusModelView>,
@@ -38,11 +38,11 @@ class ListBusItemAdapter(val listBusModelView: MutableList<BusModelView>,
             busDestiny.text = bus.destiny
             arriveAt.text = bus.arriveAt
 
-            itemView.setOnClickListener({ listener.onClick(bus.id) })
+            itemView.setOnClickListener({ listener.onClick(bus) })
         }
     }
 
     interface OnClickBus {
-        fun onClick(idBus: Int)
+        fun onClick(busModelView: BusModelView)
     }
 }

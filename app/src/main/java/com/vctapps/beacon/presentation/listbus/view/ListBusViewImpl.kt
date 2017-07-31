@@ -5,7 +5,7 @@ import com.vctapps.beacon.R
 import com.vctapps.beacon.core.presentation.BaseActivity
 import com.vctapps.beacon.core.presentation.RecyclerViewState
 import com.vctapps.beacon.core.presentation.RecyclerViewState.State
-import com.vctapps.beacon.presentation.listbus.model.BusModelView
+import com.vctapps.beacon.presentation.model.BusModelView
 import com.vctapps.beacon.presentation.listbus.presenter.ListBusPresenterImpl
 import com.vctapps.beacon.presentation.listbus.presenter.ListBusPresenter
 import kotlinx.android.synthetic.main.activity_bus_list_view_impl.*
@@ -53,7 +53,7 @@ class ListBusViewImpl : BaseActivity(), ListBusView, ListBusItemAdapter.OnClickB
         recyclerBusList.setState(State.FILLED)
     }
 
-    override fun onClick(idBus: Int) {
-        presenter.onBusClicked(idBus)
+    override fun onClick(busModelView: BusModelView) {
+        presenter.onBusClicked(busModelView)
     }
 }

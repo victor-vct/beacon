@@ -1,5 +1,6 @@
 package com.vctapps.beacon.presentation.listbus.presenter
 
+import android.content.Intent
 import com.vctapps.beacon.core.presentation.BaseView
 import com.vctapps.beacon.data.bus.BusRepository
 import com.vctapps.beacon.data.bus.BusRepositoryImpl
@@ -7,8 +8,10 @@ import com.vctapps.beacon.data.busstop.BusStopRepository
 import com.vctapps.beacon.data.busstop.BusStopRepositoryImpl
 import com.vctapps.beacon.domain.usecase.GetBusList
 import com.vctapps.beacon.domain.usecase.GetBusListImpl
-import com.vctapps.beacon.presentation.listbus.model.mapper.BusModelViewMapper
+import com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl
+import com.vctapps.beacon.presentation.model.mapper.BusModelViewMapper
 import com.vctapps.beacon.presentation.listbus.view.ListBusViewImpl
+import com.vctapps.beacon.presentation.model.BusModelView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -44,8 +47,8 @@ class ListBusPresenterImpl : ListBusPresenter {
         disposable.clear()
     }
 
-    override fun onBusClicked(busId: Int) {
-        listBusView.showLoading()
+    override fun onBusClicked(busModelView: BusModelView) {
+        goToDetailBus(busModelView)
     }
 
     private fun providesBusRepository(): BusRepository {
@@ -54,5 +57,13 @@ class ListBusPresenterImpl : ListBusPresenter {
 
     private fun providesBusListRepository(): BusStopRepository {
         return BusStopRepositoryImpl(listBusView.applicationContext)
+    }
+
+    private fun goToDetailBus(busModelView: BusModelView){
+        var intent = Intent(listBusView.applicationContext, DetailBusViewImpl::class.java)
+
+        intent.putExtra(DetailBusViewImpl.BUS_VIEW_MODEL, busModelView)
+
+        listBusView.startActivity(intent)
     }
 }

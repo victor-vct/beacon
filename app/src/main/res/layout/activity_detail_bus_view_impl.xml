@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl">
+
+    <include layout="@layout/toolbar"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/small_margin">
+
+            <TextView
+                android:id="@+id/detail_bus_name"
+                tools:text="B-63"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/primary_text"
+                android:layout_marginBottom="@dimen/large_margin"
+                style="@style/TextAppearance.AppCompat.Display2"/>
+
+            <TextView
+                android:id="@+id/detail_bus_origin"
+                tools:text="Origem: Jardim Alvorada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                style="@style/TextAppearance.AppCompat.Headline"/>
+
+            <TextView
+                android:id="@+id/detail_bus_destiny"
+                tools:text="Destino: Vila Palmares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                style="@style/TextAppearance.AppCompat.Headline"/>
+
+            <TextView
+                android:text="Chegada em:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/large_margin"
+                style="@style/TextAppearance.AppCompat.Headline"/>
+
+            <TextView
+                android:id="@+id/detail_bus_arrive_at"
+                tools:text="50 min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                style="@style/TextAppearance.AppCompat.Display3"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:text="Solicitar ônibus"
+        android:background="@color/primary"
+        android:textColor="@color/gray_100"
+        android:textSize="24sp"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="Voltar"
+        android:background="@color/gray_500"
+        android:textColor="@color/gray_100"
+        android:textSize="24sp"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

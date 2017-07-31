@@ -7,6 +7,4 @@ interface RequestBus: UseCase<Completable> {
 
     fun setIdBus(idBus: Int): RequestBus
 
-    fun setIdBusStop(idBusStop: Int): RequestBus
-
 }

@@ -1,14 +1,15 @@
-package com.vctapps.beacon.presentation.listbus.model.mapper
+package com.vctapps.beacon.presentation.model.mapper
 
 import com.vctapps.beacon.domain.entity.Bus
-import com.vctapps.beacon.presentation.listbus.model.BusModelView
+import com.vctapps.beacon.presentation.model.BusModelView
 
 object BusModelViewMapper {
 
     fun transformFrom(bus: Bus): BusModelView{
         return BusModelView(bus.id,
                 bus.line,
-                bus.destiny,
+                "Destino: " + bus.destiny,
+                "Origem: " + bus.origin,
                 bus.isFavorite,
                 "3 min")
     }
