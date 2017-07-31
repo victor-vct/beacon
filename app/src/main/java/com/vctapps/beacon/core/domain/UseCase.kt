@@ -1,3 +1,7 @@
 package com.vctapps.beacon.core.domain
 
-interface UseCase<T>
+interface UseCase<T>{
+
+    fun run(): T
+
+}
