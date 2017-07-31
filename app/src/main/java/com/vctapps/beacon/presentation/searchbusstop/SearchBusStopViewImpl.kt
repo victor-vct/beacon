@@ -1,4 +1,4 @@
-package com.vctapps.beacon.presentation
+package com.vctapps.beacon.presentation.searchbusstop
 
 import android.os.Bundle
 import android.view.View

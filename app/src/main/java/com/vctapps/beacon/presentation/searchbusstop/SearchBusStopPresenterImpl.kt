@@ -1,9 +1,11 @@
-package com.vctapps.beacon.presentation
+package com.vctapps.beacon.presentation.searchbusstop
 
+import android.content.Intent
 import com.vctapps.beacon.core.presentation.BaseActivity
 import com.vctapps.beacon.core.presentation.BaseView
-import com.vctapps.beacon.data.Repository
-import com.vctapps.beacon.data.RepositoryImpl
+import com.vctapps.beacon.data.busstop.BusStopRepository
+import com.vctapps.beacon.data.busstop.BusStopRepositoryImpl
+import com.vctapps.beacon.presentation.listbus.view.ListBusViewImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -11,12 +13,12 @@ import timber.log.Timber
 
 class SearchBusStopPresenterImpl : SearchBusStopPresenter {
 
-    lateinit var repository: Repository
-    lateinit var searchBusStopView: SearchBusStopView
+    lateinit var busStopRepository: BusStopRepository
+    lateinit var searchBusStopView: SearchBusStopViewImpl
     var disposable = CompositeDisposable()
 
     override fun attachTo(view: BaseView) {
-        if(view is SearchBusStopView){
+        if(view is SearchBusStopViewImpl){
             searchBusStopView = view
         }else{
             Timber.e(IllegalArgumentException("View is not a SearchBusStopView"))
@@ -24,9 +26,9 @@ class SearchBusStopPresenterImpl : SearchBusStopPresenter {
 
         searchBusStopView.showLoading()
 
-        repository = RepositoryImpl(view as BaseActivity)
+        busStopRepository = BusStopRepositoryImpl(view as BaseActivity)
 
-        disposable.add(repository
+        disposable.add(busStopRepository
                 .setUp(searchBusStopView)
                 .subscribeOn(Schedulers.io())
                 .subscribe({Timber.d("Setup completed")},
@@ -38,17 +40,24 @@ class SearchBusStopPresenterImpl : SearchBusStopPresenter {
     }
 
     override fun onBoundService() {
-        disposable.add(repository
+        disposable.add(busStopRepository
                 .getCloseBusStop()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     busStopId -> Timber.d("BusStopId found: " + busStopId)
-                    repository.close(searchBusStopView)
+                    busStopRepository.close(searchBusStopView)
                             .subscribe {
-                                searchBusStopView.hideLoading()}
-                            }, {
+                                searchBusStopView.hideLoading()
+                                goToListBus()
+                            }
+                    }, {
                     error -> Timber.e("Error on found beacon. " + error)}))
+    }
+
+    private fun goToListBus(){
+        var intent = Intent(searchBusStopView.applicationContext, ListBusViewImpl::class.java)
+        searchBusStopView.startActivity(intent)
     }
 
 }
