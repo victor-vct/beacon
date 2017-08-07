@@ -17,9 +17,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ListBusPresenterImpl : ListBusPresenter {
+class ListBusPresenterImpl(val getBuslist: GetBusList) : ListBusPresenter {
 
-    lateinit var getBuslist: GetBusList
     lateinit var listBusView: ListBusViewImpl
 
     val disposable = CompositeDisposable()
@@ -32,8 +31,6 @@ class ListBusPresenterImpl : ListBusPresenter {
         }
 
         listBusView.showLoading()
-
-        getBuslist = GetBusListImpl(providesBusListRepository(), providesBusRepository())
 
         disposable.add(getBuslist.run()
                 .subscribeOn(Schedulers.io())
@@ -49,14 +46,6 @@ class ListBusPresenterImpl : ListBusPresenter {
 
     override fun onBusClicked(busModelView: BusModelView) {
         goToDetailBus(busModelView)
-    }
-
-    private fun providesBusRepository(): BusRepository {
-        return BusRepositoryImpl()
-    }
-
-    private fun providesBusListRepository(): BusStopRepository {
-        return BusStopRepositoryImpl(listBusView.applicationContext)
     }
 
     private fun goToDetailBus(busModelView: BusModelView){

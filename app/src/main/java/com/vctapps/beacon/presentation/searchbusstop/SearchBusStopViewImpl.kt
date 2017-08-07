@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import com.vctapps.beacon.R
+import com.vctapps.beacon.core.BeaconApplication
 import com.vctapps.beacon.core.presentation.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
+import javax.inject.Inject
 
 class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
 
+    @Inject
     lateinit var presenter: SearchBusStopPresenter
+
     lateinit var searchingBusStopView: ViewGroup
+
     lateinit var foundBusStopView: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +26,7 @@ class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
         searchingBusStopView = linearlayout_searching_bus_stop
         foundBusStopView = linearlayout_found_bus_stop
 
-        presenter = SearchBusStopPresenterImpl()
+        (applicationContext as BeaconApplication).beaconComponent.inject(this)
     }
 
     override fun onResume() {

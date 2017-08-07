@@ -1,20 +1,18 @@
 package com.vctapps.beacon.presentation.searchbusstop
 
 import android.content.Intent
-import com.vctapps.beacon.core.presentation.BaseActivity
 import com.vctapps.beacon.core.presentation.BaseView
 import com.vctapps.beacon.data.busstop.BusStopRepository
-import com.vctapps.beacon.data.busstop.BusStopRepositoryImpl
 import com.vctapps.beacon.presentation.listbus.view.ListBusViewImpl
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class SearchBusStopPresenterImpl : SearchBusStopPresenter {
+class SearchBusStopPresenterImpl(val busStopRepository: BusStopRepository) : SearchBusStopPresenter {
 
-    lateinit var busStopRepository: BusStopRepository
     lateinit var searchBusStopView: SearchBusStopViewImpl
+
     var disposable = CompositeDisposable()
 
     override fun attachTo(view: BaseView) {
@@ -25,8 +23,6 @@ class SearchBusStopPresenterImpl : SearchBusStopPresenter {
         }
 
         searchBusStopView.showLoading()
-
-        busStopRepository = BusStopRepositoryImpl(view as BaseActivity)
 
         disposable.add(busStopRepository
                 .setUp(searchBusStopView)
