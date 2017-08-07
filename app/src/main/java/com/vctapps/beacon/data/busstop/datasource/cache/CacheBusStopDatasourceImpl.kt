@@ -7,12 +7,6 @@ import io.reactivex.Maybe
 
 class CacheBusStopDatasourceImpl: LocalBusStopDatasource {
 
-    companion object {
-        fun getNewInstance(): LocalBusStopDatasource {
-            return CacheBusStopDatasourceImpl()
-        }
-    }
-
     override fun isSetBusStopId(): Boolean {
         return CacheBusStop.busStopId != InvalidData.STRING
     }

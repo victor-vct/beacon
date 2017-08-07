@@ -3,12 +3,14 @@ package com.vctapps.beacon.presentation.detailbus.view
 import android.os.Bundle
 import android.widget.TextView
 import com.vctapps.beacon.R
+import com.vctapps.beacon.core.BeaconApplication
 import com.vctapps.beacon.core.presentation.BaseActivity
 import com.vctapps.beacon.presentation.detailbus.presenter.DetailBusPresenter
 import com.vctapps.beacon.presentation.detailbus.presenter.DetailBusPresenterImpl
 import com.vctapps.beacon.presentation.model.BusModelView
 import kotlinx.android.synthetic.main.activity_detail_bus_view_impl.*
 import kotlinx.android.synthetic.main.toolbar.*
+import javax.inject.Inject
 
 class DetailBusViewImpl : BaseActivity(), DetailBusView {
 
@@ -16,6 +18,7 @@ class DetailBusViewImpl : BaseActivity(), DetailBusView {
         val BUS_VIEW_MODEL = "bus_view_model"
     }
 
+    @Inject
     lateinit var presenter: DetailBusPresenter
 
     lateinit var busName: TextView
@@ -36,7 +39,7 @@ class DetailBusViewImpl : BaseActivity(), DetailBusView {
         busDestiny = detail_bus_destiny
         busArriveAt = detail_bus_arrive_at
 
-        presenter = DetailBusPresenterImpl()
+        (applicationContext as BeaconApplication).beaconComponent.inject(this)
     }
 
     override fun onResume() {
