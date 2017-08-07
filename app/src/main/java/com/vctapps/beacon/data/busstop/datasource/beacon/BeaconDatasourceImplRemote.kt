@@ -13,10 +13,6 @@ class BeaconDatasourceImplRemote(val context: Context): RemoteBusstopDatasource 
     companion object {
         val BEACON_LAYOUT = "m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"
         val VALID_PRE_FIX_BEACON_IDENTIFIER = "655"
-
-        fun getInstance(context: Context): RemoteBusstopDatasource {
-            return BeaconDatasourceImplRemote(context)
-        }
     }
 
     var beaconManager = providesBeaconManager()
