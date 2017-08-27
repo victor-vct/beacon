@@ -1,6 +1,8 @@
 package com.vctapps.beacon.data.busstop.datasource.beacon
 
 import android.content.Context
+import android.content.Intent
+import android.content.ServiceConnection
 import android.os.RemoteException
 import com.vctapps.beacon.data.busstop.datasource.RemoteBusstopDatasource
 import io.reactivex.Completable
@@ -16,17 +18,18 @@ class BeaconDatasourceImplRemote(val context: Context): RemoteBusstopDatasource 
     }
 
     var beaconManager = providesBeaconManager()
+    lateinit var beaconConsumer: BeaconConsumerImpl
     lateinit var region: Region
 
-    override fun bind(beaconConsumer: BeaconConsumer): Completable {
+    override fun bind(): Completable {
         return Completable.create { emmiter ->
-            beaconManager.bind(beaconConsumer)
+            beaconConsumer = BeaconConsumerImpl(context.applicationContext, emmiter)
 
-            emmiter.onComplete()
+            beaconManager.bind(beaconConsumer)
         }
     }
 
-    override fun unbind(beaconConsumer: BeaconConsumer): Completable {
+    override fun unbind(): Completable {
         return Completable.create { emmiter ->
             beaconManager.unbind(beaconConsumer)
 

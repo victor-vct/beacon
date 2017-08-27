@@ -6,9 +6,9 @@ import org.altbeacon.beacon.BeaconConsumer
 
 interface RemoteBusstopDatasource {
 
-    fun bind(beaconConsumer: BeaconConsumer): Completable
+    fun bind(): Completable
 
-    fun unbind(beaconConsumer: BeaconConsumer): Completable
+    fun unbind(): Completable
 
     fun getCloseBusStop(): Maybe<String>
 

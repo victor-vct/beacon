@@ -41,12 +41,6 @@ class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
         presenter.dettachFrom()
     }
 
-    override fun onBeaconServiceConnect() {
-        Timber.d("Beacon service connected. Trying locate a beacon")
-
-        presenter.onBoundService()
-    }
-
     override fun showLoading() {
         Timber.d("Show loading")
         searchingBusStopView.visibility = View.VISIBLE

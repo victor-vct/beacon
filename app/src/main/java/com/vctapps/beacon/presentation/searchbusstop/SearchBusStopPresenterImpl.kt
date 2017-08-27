@@ -25,9 +25,12 @@ class SearchBusStopPresenterImpl(val busStopRepository: BusStopRepository) : Sea
         searchBusStopView.showLoading()
 
         disposable.add(busStopRepository
-                .setUp(searchBusStopView)
+                .setUp()
                 .subscribeOn(Schedulers.io())
-                .subscribe({Timber.d("Setup completed")},
+                .subscribe({
+                    Timber.d("Setup completed")
+                    onBoundService()
+                },
                         {error -> Timber.e("Setup not completed: " + error)}))
     }
 
@@ -42,7 +45,7 @@ class SearchBusStopPresenterImpl(val busStopRepository: BusStopRepository) : Sea
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     busStopId -> Timber.d("BusStopId found: " + busStopId)
-                    busStopRepository.close(searchBusStopView)
+                    busStopRepository.close()
                             .subscribe {
                                 searchBusStopView.hideLoading()
                                 goToListBus()
