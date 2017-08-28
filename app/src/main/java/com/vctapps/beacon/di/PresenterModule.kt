@@ -8,6 +8,7 @@ import com.vctapps.beacon.presentation.listbus.presenter.ListBusPresenter
 import com.vctapps.beacon.presentation.listbus.presenter.ListBusPresenterImpl
 import com.vctapps.beacon.presentation.searchbusstop.SearchBusStopPresenter
 import com.vctapps.beacon.presentation.searchbusstop.SearchBusStopPresenterImpl
+import com.vctapps.beacon.service.voice.Talk
 import dagger.Module
 import dagger.Provides
 
@@ -15,18 +16,20 @@ import dagger.Provides
 class PresenterModule {
 
     @Provides
-    fun providesSearchBusStopPresenter(busStopRepository: BusStopRepository):SearchBusStopPresenter {
-        return SearchBusStopPresenterImpl(busStopRepository)
+    fun providesSearchBusStopPresenter(busStopRepository: BusStopRepository,
+                                       talk: Talk):SearchBusStopPresenter {
+        return SearchBusStopPresenterImpl(busStopRepository, talk)
     }
 
     @Provides
-    fun providesListBusPresenter(getBusList: GetBusList): ListBusPresenter {
-        return ListBusPresenterImpl(getBusList)
+    fun providesListBusPresenter(getBusList: GetBusList,
+                                 talk: Talk): ListBusPresenter {
+        return ListBusPresenterImpl(getBusList, talk)
     }
 
     @Provides
-    fun providesDetailBusPresenter(): DetailBusPresenter {
-        return DetailBusPresenterImpl()
+    fun providesDetailBusPresenter(talk: Talk): DetailBusPresenter {
+        return DetailBusPresenterImpl(talk)
     }
 
 }

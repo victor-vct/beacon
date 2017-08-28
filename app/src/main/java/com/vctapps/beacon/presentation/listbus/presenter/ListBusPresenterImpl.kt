@@ -12,16 +12,20 @@ import com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl
 import com.vctapps.beacon.presentation.model.mapper.BusModelViewMapper
 import com.vctapps.beacon.presentation.listbus.view.ListBusViewImpl
 import com.vctapps.beacon.presentation.model.BusModelView
+import com.vctapps.beacon.service.voice.Talk
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ListBusPresenterImpl(val getBuslist: GetBusList) : ListBusPresenter {
+class ListBusPresenterImpl(val getBuslist: GetBusList,
+                           val talk: Talk) : ListBusPresenter {
 
     lateinit var listBusView: ListBusViewImpl
 
     val disposable = CompositeDisposable()
+
+    private var alreadySpeaked = false
 
     override fun attachTo(view: BaseView) {
         if(view is ListBusViewImpl){
@@ -32,12 +36,29 @@ class ListBusPresenterImpl(val getBuslist: GetBusList) : ListBusPresenter {
 
         listBusView.showLoading()
 
+        talk.init()
+                .subscribe {
+                    getListBus()
+                }
+    }
+
+    private fun getListBus() {
         disposable.add(getBuslist.run()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map(BusModelViewMapper::transformFrom)
-                .subscribe(listBusView::loadList,
-                        { error -> Timber.e(error)}))
+                .subscribe({ busList ->
+                    talkNumberOfBusFound(busList.size.toString())
+                    listBusView.loadList(busList)
+                },
+                        { error -> Timber.e(error) }))
+    }
+
+    private fun talkNumberOfBusFound(numberOfBus: String) {
+        if(alreadySpeaked) return
+
+        talk.speak(numberOfBus + " ônibus encontrados")
+        alreadySpeaked = true
     }
 
     override fun dettachFrom() {

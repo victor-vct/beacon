@@ -6,10 +6,11 @@ import com.vctapps.beacon.domain.usecase.RequestBus
 import com.vctapps.beacon.presentation.detailbus.view.DetailBusView
 import com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl
 import com.vctapps.beacon.presentation.model.BusModelView
+import com.vctapps.beacon.service.voice.Talk
 import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 
-class DetailBusPresenterImpl: DetailBusPresenter{
+class DetailBusPresenterImpl(val talk: Talk): DetailBusPresenter{
 
     lateinit var requestBus: RequestBus
 
@@ -40,6 +41,7 @@ class DetailBusPresenterImpl: DetailBusPresenter{
             busModelView = intent.extras.get(DetailBusViewImpl.BUS_VIEW_MODEL) as BusModelView
             detailBusView.loadInfos(busModelView)
             detailBusView.hideLoading()
+            talkAboutBusDetail(busModelView)
         }else{
             detailBusView.showMessageError()
         }
@@ -49,6 +51,14 @@ class DetailBusPresenterImpl: DetailBusPresenter{
         disposable.add(requestBus.setIdBus(busModelView.id)
                 .run()
                 .subscribe { Timber.d("Request a bus with success") })
+    }
+
+    private fun talkAboutBusDetail(busModelView: BusModelView){
+        var text: String
+
+        text = busModelView.name + " chega em " + " 3 minutos"
+
+        talk.speak(text)
     }
 
     override fun onBackPressed() {
