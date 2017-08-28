@@ -1,6 +1,7 @@
 package com.vctapps.beacon.presentation.searchbusstop
 
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.view.ViewGroup
 import com.vctapps.beacon.R
@@ -51,5 +52,16 @@ class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
         Timber.d("Hide loading")
         searchingBusStopView.visibility = View.GONE
         foundBusStopView.visibility = View.VISIBLE
+    }
+
+    override fun showBluetoothNotEnable() {
+        var builder = AlertDialog.Builder(this)
+
+        builder.setTitle(getString(R.string.enable_bluetooth_dialog_title))
+                .setMessage(getString(R.string.enable_bluetooth_dialog_message))
+                .setPositiveButton(getString(R.string.button_positive),
+                        { dialogInterface, i -> presenter.onClickedToEnableBluetooth() })
+
+        builder.show()
     }
 }

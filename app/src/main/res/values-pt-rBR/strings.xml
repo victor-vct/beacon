@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Beacon</string>
+
+    <string name="enable_bluetooth_dialog_message">Por favor, habilite o Bluetooth para continuar.</string>
+    <string name="enable_bluetooth_dialog_title">Bluetooth desligado</string>
+
+    <string name="button_positive">Ok</string>
+
+</resources>

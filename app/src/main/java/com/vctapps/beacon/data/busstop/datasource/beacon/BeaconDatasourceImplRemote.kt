@@ -1,9 +1,11 @@
 package com.vctapps.beacon.data.busstop.datasource.beacon
 
+import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.RemoteException
+import com.vctapps.beacon.core.throwable.BluetoothIsNotEnabledError
 import com.vctapps.beacon.data.busstop.datasource.RemoteBusstopDatasource
 import io.reactivex.Completable
 import io.reactivex.Maybe
@@ -23,9 +25,16 @@ class BeaconDatasourceImplRemote(val context: Context): RemoteBusstopDatasource 
 
     override fun bind(): Completable {
         return Completable.create { emmiter ->
-            beaconConsumer = BeaconConsumerImpl(context.applicationContext, emmiter)
 
-            beaconManager.bind(beaconConsumer)
+            var bluetooth = BluetoothAdapter.getDefaultAdapter()
+
+            if(!bluetooth.isEnabled){
+                emmiter.onError(BluetoothIsNotEnabledError())
+            }else{
+                beaconConsumer = BeaconConsumerImpl(context.applicationContext, emmiter)
+
+                beaconManager.bind(beaconConsumer)
+            }
         }
     }
 

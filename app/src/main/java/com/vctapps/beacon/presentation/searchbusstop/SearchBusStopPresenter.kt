@@ -6,4 +6,6 @@ interface SearchBusStopPresenter : BasePresenter {
 
     fun onBoundService()
 
+    fun onClickedToEnableBluetooth()
+
 }

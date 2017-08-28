@@ -1,3 +1,10 @@
 <resources>
+
     <string name="app_name">Beacon</string>
+
+    <string name="enable_bluetooth_dialog_message">Please, turn on your bluetooth to continue.</string>
+    <string name="enable_bluetooth_dialog_title">Bluetooth off</string>
+
+    <string name="button_positive">Ok</string>
+
 </resources>
