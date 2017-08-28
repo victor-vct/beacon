@@ -1,5 +1,6 @@
 package com.vctapps.beacon.di
 
+import com.vctapps.beacon.core.BeaconApplication
 import com.vctapps.beacon.di.scope.BeaconScope
 import com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl
 import com.vctapps.beacon.presentation.listbus.view.ListBusView
@@ -13,7 +14,8 @@ import dagger.Component
         BeaconModule::class,
         RepositoryModule::class,
         PresenterModule::class,
-        UseCaseModule::class))
+        UseCaseModule::class,
+        VoiceModule::class))
 interface BeaconComponent {
 
     fun inject(searchView: SearchBusStopViewImpl)
