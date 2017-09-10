@@ -7,12 +7,12 @@ import com.vctapps.beacon.presentation.detailbus.view.DetailBusView
 import com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl
 import com.vctapps.beacon.presentation.model.BusModelView
 import com.vctapps.beacon.service.voice.Talk
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import timber.log.Timber
+import io.reactivex.schedulers.Schedulers
 
-class DetailBusPresenterImpl(val talk: Talk): DetailBusPresenter{
-
-    lateinit var requestBus: RequestBus
+class DetailBusPresenterImpl(val talk: Talk,
+                             val requestBus: RequestBus): DetailBusPresenter{
 
     val disposable = CompositeDisposable()
 
@@ -28,8 +28,6 @@ class DetailBusPresenterImpl(val talk: Talk): DetailBusPresenter{
         }
 
         detailBusView.showLoading()
-
-        //TODO init use case here
     }
 
     override fun dettachFrom() {
@@ -48,9 +46,11 @@ class DetailBusPresenterImpl(val talk: Talk): DetailBusPresenter{
     }
 
     override fun onRequestBusClicked() {
-        disposable.add(requestBus.setIdBus(busModelView.id)
+        disposable.add(requestBus.setId(busModelView.id)
                 .run()
-                .subscribe { Timber.d("Request a bus with success") })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { detailBusView.goToRequestBus() })
     }
 
     private fun talkAboutBusDetail(busModelView: BusModelView){

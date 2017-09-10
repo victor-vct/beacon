@@ -1,11 +1,12 @@
 package com.vctapps.beacon.data.bus
 
+import com.vctapps.beacon.data.bus.datasource.remote.BusRemoteDatasource
 import com.vctapps.beacon.domain.entity.Bus
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import java.util.*
 
-class BusRepositoryImpl: BusRepository {
+class BusRepositoryImpl(val busRemoteDatasource: BusRemoteDatasource): BusRepository {
 
     override fun getBusList(busStopId: Int): Maybe<MutableList<Bus>> {
         return Maybe.just(getMockList())
@@ -15,9 +16,7 @@ class BusRepositoryImpl: BusRepository {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun requestBus(busStopId: Int, busId: Int): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun requestBus(busStopId: Int, busId: Int) = busRemoteDatasource.requestBus(busId, busStopId)
 
     fun getMockList(): MutableList<Bus> {
         val mockList = mutableListOf<Bus>()

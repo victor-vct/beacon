@@ -5,6 +5,6 @@ import io.reactivex.Completable
 
 interface RequestBus: UseCase<Completable> {
 
-    fun setIdBus(idBus: Int): RequestBus
+    fun setId(idBus: Int): RequestBus
 
 }

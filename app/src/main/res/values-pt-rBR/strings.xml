@@ -6,6 +6,11 @@
     <string name="enable_bluetooth_dialog_message">Por favor, habilite o Bluetooth para continuar.</string>
     <string name="enable_bluetooth_dialog_title">Bluetooth desligado</string>
 
-    <string name="button_positive">Ok</string>
+    <string name="success_message_request_bus">Pode guardar seu smartphone, vamos avisar nos próximos minutos a previsão do seu ônibus</string>
+    <string name="make_bus_favorite">Favoritar</string>
+
+    <string name="button_positive">OK</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="loading_message">Carregando</string>
 
 </resources>

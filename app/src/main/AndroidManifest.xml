@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vctapps.beacon">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".core.BeaconApplication"
         android:allowBackup="true"
@@ -18,11 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:label="Ônibus disponíveis"
-            android:name=".presentation.listbus.view.ListBusViewImpl" />
+            android:name=".presentation.listbus.view.ListBusViewImpl"
+            android:label="Ônibus disponíveis" />
         <activity
-            android:label="Detalhes do ônibus"
-            android:name=".presentation.detailbus.view.DetailBusViewImpl"/>
+            android:name=".presentation.detailbus.view.DetailBusViewImpl"
+            android:label="Detalhes do ônibus" />
+        <activity android:name=".presentation.requestbus.RequestBusViewImpl"></activity>
     </application>
 
 </manifest>
