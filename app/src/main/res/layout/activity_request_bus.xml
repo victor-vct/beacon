@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/medium_margin"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context="com.vctapps.beacon.presentation.requestbus.RequestBusViewImpl">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/success_message_request_bus"
+            android:textAlignment="center"
+            style="@style/TextAppearance.AppCompat.Display1"/>
+
+        <Button
+            android:id="@+id/favoriteBus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/make_bus_favorite"
+            android:layout_marginTop="@dimen/medium_margin"
+            style="@style/PrimaryButton"/>
+
+        <Button
+            android:id="@+id/cancelRequestBus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:text="@string/button_cancel"
+            style="@style/SecondaryButton"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/loading_view"/>
+
+</FrameLayout>

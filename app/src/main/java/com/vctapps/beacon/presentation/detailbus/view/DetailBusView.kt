@@ -9,4 +9,6 @@ interface DetailBusView: BaseView{
 
     fun showMessageError()
 
+    fun goToRequestBus()
+
 }

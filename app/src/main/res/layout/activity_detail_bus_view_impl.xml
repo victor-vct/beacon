@@ -66,25 +66,23 @@
     </android.support.v7.widget.CardView>
 
     <Button
+        android:id="@+id/requestBus"
         android:text="Solicitar ônibus"
-        android:background="@color/primary"
-        android:textColor="@color/gray_100"
-        android:textSize="24sp"
         android:layout_marginTop="@dimen/small_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/PrimaryButton"/>
 
     <Button
+        android:id="@+id/backFromDetail"
         android:text="Voltar"
-        android:background="@color/gray_500"
-        android:textColor="@color/gray_100"
-        android:textSize="24sp"
         android:layout_marginTop="@dimen/medium_margin"
         android:layout_marginEnd="@dimen/small_margin"
         android:layout_marginStart="@dimen/small_margin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/SecondaryButton"/>
 
 </LinearLayout>

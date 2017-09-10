@@ -5,6 +5,11 @@
     <string name="enable_bluetooth_dialog_message">Please, turn on your bluetooth to continue.</string>
     <string name="enable_bluetooth_dialog_title">Bluetooth off</string>
 
-    <string name="button_positive">Ok</string>
+    <string name="success_message_request_bus">You can keep your smartphone in the pocket, we will tell you in next minutes arrival forecast</string>
+    <string name="make_bus_favorite">Favorite this</string>
+
+    <string name="button_positive">OK</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="loading_message">Loading</string>
 
 </resources>
