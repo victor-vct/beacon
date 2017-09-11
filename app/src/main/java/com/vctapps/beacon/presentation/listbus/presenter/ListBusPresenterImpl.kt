@@ -44,11 +44,31 @@ class ListBusPresenterImpl(val getBuslist: GetBusList,
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ busList ->
+
+                    putFavoriteInTopOf(busList)
+
                     this.busList = busList
+
                     talkNumberOfBusFound(busList.size.toString())
+
                     listBusView.loadList(BusModelViewMapper.transformFrom(busList))
                 },
                         { error -> Timber.e(error) }))
+    }
+
+    private fun putFavoriteInTopOf(busList: MutableList<Bus>) {
+        var nextPossiblePosition = 0
+        var favoriteIndices = mutableListOf<Int>()
+        var tempBus: Bus
+
+        busList.forEachIndexed { index, bus -> if (bus.isFavorite) favoriteIndices.add(index) }
+
+        favoriteIndices.forEach { index ->
+            tempBus = busList[nextPossiblePosition]
+            busList[nextPossiblePosition] = busList[index]
+            busList[index] = tempBus
+            nextPossiblePosition++
+        }
     }
 
     private fun talkNumberOfBusFound(numberOfBus: String) {
@@ -63,7 +83,7 @@ class ListBusPresenterImpl(val getBuslist: GetBusList,
     }
 
     override fun onBusClicked(position: Int) {
-        goToDetailBus(busList.get(position))
+        goToDetailBus(busList[position])
     }
 
     private fun goToDetailBus(bus: Bus){
