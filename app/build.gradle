@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.objectbox'
 
 ext {
     RXJAVA_VERSION = '2.1.2'
@@ -19,6 +20,8 @@ ext {
     TIMBER_VERSION = '4.5.1'
 
     ANDROID_SUPPORT_APPCOMPAT_VERSION = '25.3.1'
+
+    OBJECTBOX_VERSION = '1.0.0'
 
     JUNIT_VERSION = '4.12'
     MOCKITO_CORE_VERSION = '2.7.19'
@@ -77,6 +80,11 @@ dependencies {
 
     // TIMBER
     compile "com.jakewharton.timber:timber:${TIMBER_VERSION}"
+
+    // OBJECTBOX
+    compile "io.objectbox:objectbox-kotlin:${OBJECTBOX_VERSION}"
+    compile "io.objectbox:objectbox-android:${OBJECTBOX_VERSION}"
+    kapt "io.objectbox:objectbox-processor:${OBJECTBOX_VERSION}"
 
     testCompile "junit:junit:${JUNIT_VERSION}"
     testCompile "org.hamcrest:hamcrest-library:${HAMCREST_VERSION}"
