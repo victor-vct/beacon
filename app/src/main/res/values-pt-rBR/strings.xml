@@ -9,6 +9,8 @@
     <string name="success_message_request_bus">Pode guardar seu smartphone, vamos avisar nos próximos minutos a previsão do seu ônibus</string>
     <string name="make_bus_favorite">Favoritar</string>
 
+    <string name="error_message">Não foi possível completar\na operação :(</string>
+
     <string name="button_positive">OK</string>
     <string name="button_cancel">Cancelar</string>
     <string name="loading_message">Carregando</string>

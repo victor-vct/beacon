@@ -48,4 +48,7 @@
 
     </LinearLayout>
 
+    <include layout="@layout/error_view"
+        android:visibility="gone"/>
+
 </FrameLayout>

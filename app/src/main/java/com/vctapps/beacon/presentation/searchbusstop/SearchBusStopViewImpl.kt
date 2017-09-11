@@ -8,6 +8,7 @@ import com.vctapps.beacon.R
 import com.vctapps.beacon.core.BeaconApplication
 import com.vctapps.beacon.core.presentation.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.recyclerviewstate.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -52,6 +53,10 @@ class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
         Timber.d("Hide loading")
         searchingBusStopView.visibility = View.GONE
         foundBusStopView.visibility = View.VISIBLE
+    }
+
+    override fun showMessageError() {
+        error_message.visibility = View.VISIBLE
     }
 
     override fun showBluetoothNotEnable() {

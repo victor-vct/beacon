@@ -41,4 +41,7 @@
 
     <include layout="@layout/loading_view"/>
 
+    <include layout="@layout/error_view"
+        android:visibility="gone"/>
+
 </FrameLayout>

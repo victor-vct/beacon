@@ -6,6 +6,8 @@ import io.reactivex.Maybe
 
 interface BusRepository {
 
+    fun saveFavoriteBus(bus: Bus): Completable
+
     fun getBusList(busStopId: Int): Maybe<MutableList<Bus>>
 
     fun getBus(busStopId: Int, busId: Int): Maybe<Bus>

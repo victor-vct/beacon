@@ -1,5 +1,6 @@
 package com.vctapps.beacon.domain.entity
 
+import java.io.Serializable
 import java.util.*
 
 data class Bus(val id: Int,
@@ -7,4 +8,4 @@ data class Bus(val id: Int,
                val origin: String,
                val destiny: String,
                var isFavorite: Boolean,
-               val arrivalAt: Calendar)
+               val arrivalAt: Calendar): Serializable

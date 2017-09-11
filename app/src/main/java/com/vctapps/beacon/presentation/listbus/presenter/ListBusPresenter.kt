@@ -5,6 +5,6 @@ import com.vctapps.beacon.presentation.model.BusModelView
 
 interface ListBusPresenter: BasePresenter{
 
-    fun onBusClicked(busModelView: BusModelView)
+    fun onBusClicked(position: Int)
 
 }

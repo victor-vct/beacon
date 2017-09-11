@@ -1,5 +1,6 @@
 package com.vctapps.beacon.di
 
+import com.vctapps.beacon.data.bus.BusRepository
 import com.vctapps.beacon.data.busstop.BusStopRepository
 import com.vctapps.beacon.domain.usecase.GetBusList
 import com.vctapps.beacon.domain.usecase.RequestBus
@@ -36,8 +37,9 @@ class PresenterModule {
     }
 
     @Provides
-    fun providesRequestBusPresenter(talk: Talk): RequestBusPresenter {
-        return RequestBusPresenterImpl(talk)
+    fun providesRequestBusPresenter(busRepository: BusRepository,
+                                    talk: Talk): RequestBusPresenter {
+        return RequestBusPresenterImpl(talk, busRepository)
     }
 
 }

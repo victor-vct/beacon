@@ -8,6 +8,7 @@ import android.widget.TextView
 import com.vctapps.beacon.R
 import com.vctapps.beacon.core.BeaconApplication
 import com.vctapps.beacon.core.presentation.BaseActivity
+import com.vctapps.beacon.domain.entity.Bus
 import com.vctapps.beacon.presentation.detailbus.presenter.DetailBusPresenter
 import com.vctapps.beacon.presentation.detailbus.presenter.DetailBusPresenterImpl
 import com.vctapps.beacon.presentation.model.BusModelView
@@ -19,7 +20,7 @@ import javax.inject.Inject
 class DetailBusViewImpl : BaseActivity(), DetailBusView {
 
     companion object {
-        val BUS_VIEW_MODEL = "bus_view_model"
+        val BUS_MODEL = "bus_model"
     }
 
     @Inject
@@ -88,8 +89,10 @@ class DetailBusViewImpl : BaseActivity(), DetailBusView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun goToRequestBus() {
+    override fun goToRequestBus(bus: Bus) {
         var goToRequestBus = Intent(this, RequestBusViewImpl::class.java)
+
+        goToRequestBus.putExtra(RequestBusViewImpl.BUS_MODEL, bus)
 
         startActivity(goToRequestBus)
     }
