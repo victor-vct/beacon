@@ -73,7 +73,8 @@
         android:layout_marginStart="@dimen/small_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/PrimaryButton"/>
+        style="@style/PrimaryButton"
+        android:contentDescription="Solicite que esse ônibus pare quando chegar"/>
 
     <Button
         android:id="@+id/backFromDetail"
@@ -83,6 +84,7 @@
         android:layout_marginStart="@dimen/small_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/SecondaryButton"/>
+        style="@style/SecondaryButton"
+        android:contentDescription="Voltar para lista"/>
 
 </LinearLayout>
