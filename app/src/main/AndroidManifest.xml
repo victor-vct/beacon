@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".presentation.searchbusstop.SearchBusStopViewImpl">
+        <activity android:name=".presentation.searchbusstop.SearchBusStopViewImpl"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +22,12 @@
         </activity>
         <activity
             android:name=".presentation.listbus.view.ListBusViewImpl"
-            android:label="Ônibus disponíveis" />
+            android:label="Ônibus disponíveis"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".presentation.detailbus.view.DetailBusViewImpl"
-            android:label="Detalhes do ônibus" />
+            android:label="Detalhes do ônibus"
+            android:screenOrientation="portrait"/>
         <activity android:name=".presentation.requestbus.RequestBusViewImpl"></activity>
     </application>
 
