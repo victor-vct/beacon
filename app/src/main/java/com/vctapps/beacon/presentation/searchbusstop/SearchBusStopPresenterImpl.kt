@@ -81,6 +81,7 @@ class SearchBusStopPresenterImpl(val busStopRepository: BusStopRepository,
     private fun goToListBus() {
         var intent = Intent(searchBusStopView.applicationContext, ListBusViewImpl::class.java)
         searchBusStopView.startActivity(intent)
+        searchBusStopView.finish()
     }
 
 }
