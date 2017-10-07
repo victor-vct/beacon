@@ -69,4 +69,8 @@ class RequestBusViewImpl : AppCompatActivity(), RequestBusView {
     override fun showMessageError() {
         error_message.visibility = View.VISIBLE
     }
+
+    override fun getContext() = this
+
+    override fun close() = finish()
 }

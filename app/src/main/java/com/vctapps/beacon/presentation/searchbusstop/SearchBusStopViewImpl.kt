@@ -1,5 +1,6 @@
 package com.vctapps.beacon.presentation.searchbusstop
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.view.View
@@ -69,4 +70,8 @@ class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
 
         builder.show()
     }
+
+    override fun getContext() = this
+
+    override fun close() = finish()
 }

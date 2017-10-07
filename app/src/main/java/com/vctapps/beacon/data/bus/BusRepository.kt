@@ -14,4 +14,8 @@ interface BusRepository {
 
     fun requestBus(busStopId: Int, busModuleId: String): Completable
 
+    fun cancelRequestBus(): Completable
+
+    fun checkIfThereIsRequest(): Maybe<String>
+
 }

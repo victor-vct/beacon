@@ -1,5 +1,8 @@
 package com.vctapps.beacon.di
 
+import android.content.Context
+import com.vctapps.beacon.core.presentation.Router
+import com.vctapps.beacon.core.presentation.RouterImpl
 import com.vctapps.beacon.data.bus.BusRepository
 import com.vctapps.beacon.data.busstop.BusStopRepository
 import com.vctapps.beacon.domain.usecase.GetBusList
@@ -20,26 +23,36 @@ import dagger.Provides
 class PresenterModule {
 
     @Provides
-    fun providesSearchBusStopPresenter(busStopRepository: BusStopRepository,
-                                       talk: Talk):SearchBusStopPresenter {
-        return SearchBusStopPresenterImpl(busStopRepository, talk)
+    fun providesSearchBusStopPresenter(busRepository: BusRepository,
+                                       busStopRepository: BusStopRepository,
+                                       talk: Talk,
+                                       router: Router):SearchBusStopPresenter {
+        return SearchBusStopPresenterImpl(busRepository, busStopRepository, talk, router)
     }
 
     @Provides
     fun providesListBusPresenter(getBusList: GetBusList,
-                                 talk: Talk): ListBusPresenter {
-        return ListBusPresenterImpl(getBusList, talk)
+                                 talk: Talk,
+                                 router: Router): ListBusPresenter {
+        return ListBusPresenterImpl(getBusList, talk, router)
     }
 
     @Provides
-    fun providesDetailBusPresenter(talk: Talk, requestBus: RequestBus): DetailBusPresenter {
-        return DetailBusPresenterImpl(talk, requestBus)
+    fun providesDetailBusPresenter(talk: Talk, requestBus: RequestBus,
+                                   router: Router): DetailBusPresenter {
+        return DetailBusPresenterImpl(talk, requestBus, router)
     }
 
     @Provides
     fun providesRequestBusPresenter(busRepository: BusRepository,
-                                    talk: Talk): RequestBusPresenter {
-        return RequestBusPresenterImpl(talk, busRepository)
+                                    talk: Talk,
+                                    router: Router): RequestBusPresenter {
+        return RequestBusPresenterImpl(talk, busRepository, router)
+    }
+
+    @Provides
+    fun providesRouter(): Router {
+        return RouterImpl()
     }
 
 }

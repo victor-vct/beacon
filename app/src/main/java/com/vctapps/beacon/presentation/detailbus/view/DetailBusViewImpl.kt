@@ -1,18 +1,13 @@
 package com.vctapps.beacon.presentation.detailbus.view
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.vctapps.beacon.R
 import com.vctapps.beacon.core.BeaconApplication
 import com.vctapps.beacon.core.presentation.BaseActivity
-import com.vctapps.beacon.domain.entity.Bus
 import com.vctapps.beacon.presentation.detailbus.presenter.DetailBusPresenter
-import com.vctapps.beacon.presentation.detailbus.presenter.DetailBusPresenterImpl
 import com.vctapps.beacon.presentation.model.BusModelView
-import com.vctapps.beacon.presentation.requestbus.RequestBusViewImpl
 import kotlinx.android.synthetic.main.activity_detail_bus_view_impl.*
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
@@ -89,11 +84,8 @@ class DetailBusViewImpl : BaseActivity(), DetailBusView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun goToRequestBus(bus: Bus) {
-        var goToRequestBus = Intent(this, RequestBusViewImpl::class.java)
+    override fun getContext() = this
 
-        goToRequestBus.putExtra(RequestBusViewImpl.BUS_MODEL, bus)
+    override fun close() = finish()
 
-        startActivity(goToRequestBus)
-    }
 }

@@ -1,22 +1,22 @@
 package com.vctapps.beacon.presentation.listbus.presenter
 
-import android.content.Intent
 import com.vctapps.beacon.core.presentation.BaseView
+import com.vctapps.beacon.core.presentation.Router
 import com.vctapps.beacon.domain.entity.Bus
 import com.vctapps.beacon.domain.usecase.GetBusList
-import com.vctapps.beacon.presentation.detailbus.view.DetailBusViewImpl
+import com.vctapps.beacon.presentation.listbus.view.ListBusView
 import com.vctapps.beacon.presentation.model.mapper.BusModelViewMapper
-import com.vctapps.beacon.presentation.listbus.view.ListBusViewImpl
 import com.vctapps.beacon.service.voice.Talk
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ListBusPresenterImpl(val getBuslist: GetBusList,
-                           val talk: Talk) : ListBusPresenter {
+class ListBusPresenterImpl(private val getBuslist: GetBusList,
+                           private val talk: Talk,
+                           private val router: Router) : ListBusPresenter {
 
-    lateinit var listBusView: ListBusViewImpl
+    lateinit var listBusView: ListBusView
 
     lateinit var busList: MutableList<Bus>
 
@@ -25,8 +25,9 @@ class ListBusPresenterImpl(val getBuslist: GetBusList,
     private var alreadySpeaked = false
 
     override fun attachTo(view: BaseView) {
-        if(view is ListBusViewImpl){
+        if(view is ListBusView){
             listBusView = view
+            router.setActivityContext(listBusView.getContext())
         }else{
             throw Throwable("View needs to be ListBusView")
         }
@@ -75,6 +76,7 @@ class ListBusPresenterImpl(val getBuslist: GetBusList,
         if(alreadySpeaked) return
 
         talk.speak(numberOfBus + " ônibus encontrados")
+
         alreadySpeaked = true
     }
 
@@ -83,14 +85,7 @@ class ListBusPresenterImpl(val getBuslist: GetBusList,
     }
 
     override fun onBusClicked(position: Int) {
-        goToDetailBus(busList[position])
+        router.goToDetailBus(busList[position])
     }
 
-    private fun goToDetailBus(bus: Bus){
-        var intent = Intent(listBusView.applicationContext, DetailBusViewImpl::class.java)
-
-        intent.putExtra(DetailBusViewImpl.BUS_MODEL, bus)
-
-        listBusView.startActivity(intent)
-    }
 }

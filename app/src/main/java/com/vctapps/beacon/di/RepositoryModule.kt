@@ -52,8 +52,9 @@ class RepositoryModule {
     }
 
     @Provides
-    fun providesBusLocalDataSource(busBox: Box<BusLocalEntity>): BusLocalDatasource {
-        return BusLocalDatasourceImpl(busBox)
+    fun providesBusLocalDataSource(busBox: Box<BusLocalEntity>,
+                                   context: Context): BusLocalDatasource {
+        return BusLocalDatasourceImpl(busBox, context)
     }
 
     @Provides

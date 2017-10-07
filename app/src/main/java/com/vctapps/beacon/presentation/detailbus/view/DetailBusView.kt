@@ -8,6 +8,4 @@ interface DetailBusView: BaseView{
 
     fun loadInfos(bus: BusModelView)
 
-    fun goToRequestBus(bus: Bus)
-
 }

@@ -2,6 +2,7 @@ package com.vctapps.beacon.presentation.detailbus.presenter
 
 import android.content.Intent
 import com.vctapps.beacon.core.presentation.BaseView
+import com.vctapps.beacon.core.presentation.Router
 import com.vctapps.beacon.domain.entity.Bus
 import com.vctapps.beacon.domain.usecase.RequestBus
 import com.vctapps.beacon.presentation.detailbus.view.DetailBusView
@@ -13,8 +14,9 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class DetailBusPresenterImpl(val talk: Talk,
-                             val requestBus: RequestBus): DetailBusPresenter{
+class DetailBusPresenterImpl(private val talk: Talk,
+                             private val requestBus: RequestBus,
+                             private val router: Router): DetailBusPresenter{
 
     val disposable = CompositeDisposable()
 
@@ -27,6 +29,8 @@ class DetailBusPresenterImpl(val talk: Talk,
     override fun attachTo(view: BaseView) {
         if(view is DetailBusView){
             detailBusView = view
+
+            router.setActivityContext(detailBusView.getContext())
         }else{
             throw IllegalArgumentException("Needs to be a DetailBusView type")
         }
@@ -59,7 +63,12 @@ class DetailBusPresenterImpl(val talk: Talk,
                 .run()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { detailBusView.goToRequestBus(bus) })
+                .doOnSubscribe { detailBusView.showLoading() }
+                .doOnComplete({
+                    router.goToRequestedBus(bus)
+                    detailBusView.close()
+                })
+                .subscribe())
     }
 
     private fun talkAboutBusDetail(busModelView: BusModelView){

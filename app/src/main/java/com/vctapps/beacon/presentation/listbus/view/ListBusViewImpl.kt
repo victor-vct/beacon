@@ -68,4 +68,8 @@ class ListBusViewImpl : BaseActivity(), ListBusView, ListBusItemAdapter.OnClickB
     override fun onClick(position: Int) {
         presenter.onBusClicked(position)
     }
+
+    override fun getContext() = this
+
+    override fun close() = finish()
 }
