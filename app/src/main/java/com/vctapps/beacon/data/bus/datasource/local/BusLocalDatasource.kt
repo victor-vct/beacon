@@ -10,5 +10,5 @@ interface BusLocalDatasource {
 
     fun deleteFavorite(bus: Bus): Completable
 
-    fun getFavoritesIds(): Maybe<MutableList<Long>>
+    fun getFavoriteLines(): Maybe<MutableList<String>>
 }

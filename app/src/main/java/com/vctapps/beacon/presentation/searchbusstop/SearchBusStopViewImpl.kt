@@ -65,7 +65,7 @@ class SearchBusStopViewImpl : BaseActivity(), SearchBusStopView {
         builder.setTitle(getString(R.string.enable_bluetooth_dialog_title))
                 .setMessage(getString(R.string.enable_bluetooth_dialog_message))
                 .setPositiveButton(getString(R.string.button_positive),
-                        { dialogInterface, i -> presenter.onClickedToEnableBluetooth() })
+                        { _, _ -> presenter.onClickedToEnableBluetooth() })
 
         builder.show()
     }

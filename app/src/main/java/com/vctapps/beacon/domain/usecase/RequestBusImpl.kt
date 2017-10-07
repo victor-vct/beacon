@@ -9,18 +9,18 @@ import io.reactivex.Completable
 class RequestBusImpl(val busStopRepository: BusStopRepository,
                      val busRepository: BusRepository): RequestBus {
 
-    var idBus: Int = InvalidData.INT
+    var idBusModule: String = InvalidData.STRING
 
 
-    override fun setId(idBus: Int): RequestBus {
-        this.idBus = idBus
+    override fun setId(idBusModule: String): RequestBus {
+        this.idBusModule = idBusModule
         return this
     }
 
     override fun run(): Completable {
         return busStopRepository.getCloseBusStop()
                 .flatMapCompletable { idBusStoṕ ->
-                    busRepository.requestBus(idBus, idBusStoṕ.toInt())
+                    busRepository.requestBus(idBusStoṕ.toInt(), idBusModule)
                 }
     }
 }

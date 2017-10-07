@@ -11,7 +11,7 @@ class BusRemoteDatasourceImpl(val apiService: ApiService): BusRemoteDatasource {
         return apiService.getBusList(busStopId)
     }
 
-    override fun requestBus(busId: Int, busStopId: Int): Completable {
-        return apiService.requestBus(busId, busStopId)
+    override fun requestBus(busModuleId: String, busStopId: Int): Completable {
+        return apiService.requestBus(busModuleId, busStopId)
     }
 }

@@ -12,6 +12,6 @@ interface BusRepository {
 
     fun getBus(busStopId: Int, busId: Int): Maybe<Bus>
 
-    fun requestBus(busStopId: Int, busId: Int): Completable
+    fun requestBus(busStopId: Int, busModuleId: String): Completable
 
 }

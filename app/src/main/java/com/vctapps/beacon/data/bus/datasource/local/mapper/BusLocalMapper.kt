@@ -6,7 +6,7 @@ import com.vctapps.beacon.domain.entity.Bus
 object BusLocalMapper{
 
     fun transformFrom(bus: Bus): BusLocalEntity{
-        return BusLocalEntity(bus.id.toLong())
+        return BusLocalEntity(bus.line)
     }
 
 }

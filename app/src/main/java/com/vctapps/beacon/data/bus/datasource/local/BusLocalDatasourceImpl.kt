@@ -29,18 +29,18 @@ class BusLocalDatasourceImpl(val busBox: Box<BusLocalEntity>): BusLocalDatasourc
         }
     }
 
-    override fun getFavoritesIds(): Maybe<MutableList<Long>> {
+    override fun getFavoriteLines(): Maybe<MutableList<String>> {
         return Maybe.create { emitter ->
             var favoritesBus = busBox.all
 
-            var favoritesIds = mutableListOf<Long>()
+            var favoriteLines = mutableListOf<String>()
 
-            favoritesBus.forEach { (id) -> favoritesIds.add(id) }
+            favoritesBus.forEach { (id) -> favoriteLines.add(id) }
 
             if(favoritesBus.isEmpty()){
                 emitter.onComplete()
             }else{
-                emitter.onSuccess(favoritesIds)
+                emitter.onSuccess(favoriteLines)
             }
         }
     }

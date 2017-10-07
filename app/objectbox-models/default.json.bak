@@ -5,34 +5,31 @@
   "entities": [
     {
       "id": "1:5756877680457916003",
-      "lastPropertyId": "4:2956455458845325035",
+      "lastPropertyId": "3:3567884920820517092",
       "name": "BusLocalEntity",
       "properties": [
         {
-          "id": "3:3567884920820517092",
-          "name": "id"
+          "id": "2:2024512846548279444",
+          "indexId": "1:8997613272116454690",
+          "name": "uid"
         },
         {
-          "id": "4:2956455458845325035",
-          "indexId": "2:7727646982729157377",
-          "name": "line"
+          "id": "3:3567884920820517092",
+          "name": "id"
         }
       ],
       "relations": []
     }
   ],
   "lastEntityId": "1:5756877680457916003",
-  "lastIndexId": "2:7727646982729157377",
+  "lastIndexId": "1:8997613272116454690",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 3,
   "retiredEntityUids": [],
-  "retiredIndexUids": [
-    8997613272116454690
-  ],
+  "retiredIndexUids": [],
   "retiredPropertyUids": [
-    8700333299991742920,
-    2024512846548279444
+    8700333299991742920
   ],
   "retiredRelationUids": [],
   "version": 1

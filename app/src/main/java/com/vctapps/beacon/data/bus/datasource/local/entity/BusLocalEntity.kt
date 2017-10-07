@@ -2,6 +2,11 @@ package com.vctapps.beacon.data.bus.datasource.local.entity
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
+import io.objectbox.annotation.Index
 
 @Entity
-data class BusLocalEntity(@Id(assignable = true) var id: Long = 0)
+data class BusLocalEntity(@Index var line: String = ""){
+
+    @Id var id: Long = 0
+
+}

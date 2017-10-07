@@ -8,6 +8,6 @@ interface BusRemoteDatasource {
 
     fun requestBusList(busStopId: Int): Maybe<BusRemoteEntity>
 
-    fun requestBus(busId: Int, BusStopId: Int): Completable
+    fun requestBus(busModuleId: String, busStopId: Int): Completable
 
 }
