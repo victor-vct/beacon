@@ -11,7 +11,7 @@ object BusModelViewMapper {
                 "Destino: " + bus.destiny,
                 "Origem: " + bus.origin,
                 bus.isFavorite,
-                "3 min")
+                bus.arriveAt)
     }
 
     fun transformFrom(listBus: MutableList<Bus>): MutableList<BusModelView>{

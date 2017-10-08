@@ -7,7 +7,7 @@ import io.reactivex.Maybe
 
 interface BusRemoteDatasource {
 
-    fun requestBusList(busStopId: Int): Maybe<BusRemoteEntity>
+    fun requestBusList(busStopId: Int): Maybe<MutableList<BusRemoteEntity>>
 
     fun requestBus(busModuleId: String, busStopId: Int): Maybe<BusRequireResponse>
 

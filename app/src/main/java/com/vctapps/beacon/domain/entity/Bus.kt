@@ -5,7 +5,7 @@ import java.util.*
 
 data class Bus(val id: String,
                val line: String,
-               val origin: String,
-               val destiny: String,
+               val origin: String?,
+               val destiny: String?,
                var isFavorite: Boolean,
-               val arrivalAt: Calendar): Serializable
+               val arriveAt: String): Serializable

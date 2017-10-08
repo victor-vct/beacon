@@ -12,7 +12,7 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("busstop/{id_busstop}/bus/")
-    fun getBusList(@Path("id_busstop") busStopId: Int): Maybe<BusRemoteEntity>
+    fun getBusList(@Path("id_busstop") busStopId: Int): Maybe<MutableList<BusRemoteEntity>>
 
     @POST("busmodule/{id_busmodule}/busstop/{id_busstop}")
     fun requestBus(@Path("id_busmodule") busModuleId: String, @Path("id_busstop") busStopId: Int): Maybe<BusRequireResponse>

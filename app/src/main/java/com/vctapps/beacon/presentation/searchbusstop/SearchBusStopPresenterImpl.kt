@@ -43,7 +43,7 @@ class SearchBusStopPresenterImpl(private val busRepository: BusRepository,
         disposable.add(busRepository.checkIfThereIsRequest()
                 .subscribe({ uid ->
                     Timber.d("Needs open activity")
-                    router.goToRequestedBus(Bus("teste", "teste", "teste", "Teste", false, Calendar.getInstance()))
+                    router.goToRequestedBus(Bus("teste", "teste", "teste", "Teste", false, ""))
                 },{
                     error -> Timber.e(error)
                 },{

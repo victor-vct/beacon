@@ -74,7 +74,7 @@ class DetailBusPresenterImpl(private val talk: Talk,
     private fun talkAboutBusDetail(busModelView: BusModelView){
         var text: String
 
-        text = busModelView.name + " chega em " + " 3 minutos"
+        text = busModelView.name + " chega em " + busModelView.arriveAt
 
         talk.speak(text)
     }

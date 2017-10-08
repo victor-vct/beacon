@@ -1,10 +1,9 @@
 package com.vctapps.beacon.data.bus.datasource.remote.entity
 
-import java.util.*
+import com.google.gson.annotations.SerializedName
 
-class BusRemoteEntity(val id: Int,
-                      val line: String,
-                      val origin: String,
-                      val destiny: String,
-                      var isFavorite: Boolean,
-                      val arrivalAt: Calendar)
+class BusRemoteEntity(@SerializedName("_id") val id: String,
+                      val busLine: BusLine,
+                      val origin: String = "",
+                      val destiny: String = "",
+                      val arriveAt: String)
