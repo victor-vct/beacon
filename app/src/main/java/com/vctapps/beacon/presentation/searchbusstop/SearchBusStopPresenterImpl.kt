@@ -1,5 +1,6 @@
 package com.vctapps.beacon.presentation.searchbusstop
 
+import com.google.firebase.iid.FirebaseInstanceId
 import com.vctapps.beacon.R
 import com.vctapps.beacon.core.presentation.BaseView
 import com.vctapps.beacon.core.presentation.Router
@@ -30,6 +31,7 @@ class SearchBusStopPresenterImpl(private val busRepository: BusRepository,
         } else {
             Timber.e(IllegalArgumentException("View is not a SearchBusStopView"))
         }
+        Timber.d("Firebase token: " + FirebaseInstanceId.getInstance().token)
 
         searchBusStopView.showLoading()
 
